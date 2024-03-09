@@ -10,9 +10,32 @@
     display: grid;
     grid-template-columns: repeat(7, 1fr);
 grid-gap: 20px;
+color: rgb(13, 15, 15);
     }
 
     .card-item{
-    background-color: rgb(201, 201, 244);
+    background: linear-gradient(349deg, #875e5e, transparent);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+ 
 
+  }  
+.cabecera{
+    background: rgb(63, 25, 25);
+    height:  125px;
+    margin-bottom: 75px;
+}
+img{
+height: 150px;
+width: 150px; 
+border-radius: 1000px;
+object-fit: auto;
+position: absolute;
+right: calc(50% - 75px);
+top: calc(50% - 125px);
+}
+p, label{
+    padding: 3px 20px;
+    font-weight: 600;
 }

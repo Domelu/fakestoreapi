@@ -16,10 +16,10 @@ function getDATA (){
       `
       <div class= 'card-item'>
       <div class='cabecera'></div>
-      <img  width= "100px" src= "${data[i].image}" />
-      <p>titulo: ${data[i].title} </p>
-      <p>precio: ${data[i].price} </p>
-      <p>categ: ${data[i].category} </p>
+      <img src= "${data[i].image}" />
+      <p class="titulo">${data[i].title} </p>
+      <p> ${data[i].price} </p>
+      <label> ${data[i].category} </label>
      </div>
  
       `;
