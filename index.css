@@ -14,7 +14,7 @@ color: rgb(13, 15, 15);
     }
 
     .card-item{
-    background: linear-gradient(349deg, #875e5e, transparent);
+    background: linear-gradient(349deg, #a09999, transparent);
     border-radius: 10px;
     overflow: hidden;
     position: relative;
@@ -22,7 +22,7 @@ color: rgb(13, 15, 15);
 
   }  
 .cabecera{
-    background: rgb(63, 25, 25);
+    background: rgb(16, 7, 37);
     height:  125px;
     margin-bottom: 75px;
 }
