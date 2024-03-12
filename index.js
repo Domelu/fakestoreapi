@@ -13,11 +13,11 @@ function getDATA (){
 
       console.log("datos de la api: ",data) 
       for(let i = 0; i < data.length; i++){
-        // rgb(r g b);
+
         let r = Math.floor( Math.random()*256)
         let g = Math.floor( Math.random()*256)
         let b = Math.floor( Math.random()*256)
-        console.log("colo r:" + r, g ,b)
+  
      let bloquehtml =
       `
       <div class= 'card-item'>
@@ -26,7 +26,7 @@ function getDATA (){
       <img src= "${data[i].image}" />
       </div>
       
-      <p class="titulo">${data[i].title} </p>
+      <p class='titulo'>${data[i].title} </p>
       <p> ${data[i].price} </p>
       <label class='categoria'> ${data[i].category} </label>
      </div>
