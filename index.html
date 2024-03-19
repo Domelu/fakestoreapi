@@ -6,28 +6,35 @@
     <title>Document</title>
     <link rel="stylesheet" href="./index.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-   
+    <title>Menù Lateral con Css</title>
+	<link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-    <div class="menu">
-        <div class="menu" id="menuItems">
-            <ul>
-                <li class="nav-item dropdown">
-                   <button class="menu-icon"><i class="material-symbols-outlined">menu</i></button>
-                   <button onclick="toggleMenu()"></button>
-                   <div class="dropdown-menu" aria-labelledby="favDropdown">
-                        <a class="dropdown-item" href="#" id="fav1">Favorito 1</a>
-                        <a class="dropdown-item" href="#" id="fav2">Favorito 2</a>
-                        <a class="dropdown-item" href="#" id="fav3">Favorito 3</a>
-                    </div>
-                </li>          
-            </ul>
-        </div>
-            
+	<header class="header">
+		<div class="container">
+		<div class="btn-menu">
+			<label for="btn-menu">☰</label>
+		</div>
+			<div class="logo">
+				<h1>Favoritos</h1>
+			</div>
+			
+		</div>
+	</header>
+	<div class="capa"></div>
     </div>
       
     <div id="productos"></div>
     <script src="./index.js"></script>
-    
+    <input type="checkbox" id="btn-menu">
+<div class="container-menu">
+	<div class="cont-menu">
+		<nav>
+			<a href="#">Favoritos</a>
+			
+		</nav>
+		<label for="btn-menu">✖️</label>
+	</div>
+</div>
 </body>
 </html>

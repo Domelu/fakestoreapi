@@ -25,7 +25,10 @@ let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 }
 let listafav = []
 function favorito(id){
-
+  if (!listafav.includes(id)) {
+    listafav.push(id);
+    console.log("Lista fav:", listafav[listafav.length - 1]);
+  }
   listafav.includes(2)
   listafav.push(id)
 
@@ -37,33 +40,7 @@ function favorito(id){
 
 
 
-  function favorito(id) {
-    if (!listafav.includes(id)) {
-      listafav.push(id);
-      console.log("Lista fav:", listafav[listafav.length - 1]);
-    }
-    
-    document.addEventListener('DOMContentLoaded', function () {
-      const menuIcon = document.querySelector('.menu-icon'); // Select the icon
-      const menuItems = document.getElementById('menuItems'); // Select the menu container
-      
-      menuIcon.addEventListener('click', function () {
-        console.log("Clicked!");
-        console.log(menuItems);
-        menuItems.classList.toggle('hide');
-
-        function toggleMenu() {
-          const menuItems = document.getElementById('menuItems'); // Replace with the actual ID of your menu element
-          menuItems.classList.toggle('hide'); // Replace 'hide' with the class used for hiding the menu in your CSS
-        }
-        
-        
-          
-      });
-  });
-  
-   
-  }
+ 
   
   function mapearDatos(data){
     let tabla = "<div class='card'>";
@@ -88,9 +65,7 @@ function favorito(id){
     <button onclick='otrafuncion()'> 0 </button>
 
     </div>
-    <div class= "menu">${item.id}</div>
-    <button onclick="menu-icon"></button>
-    </div>
+    
     `;
   tabla += bloquehtml;
 
