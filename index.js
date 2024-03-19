@@ -25,10 +25,7 @@ let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 }
 let listafav = []
 function favorito(id){
-  if (!listafav.includes(id)) {
-    listafav.push(id);
-    console.log("Lista fav:", listafav[listafav.length - 1]);
-  }
+
   listafav.includes(2)
   listafav.push(id)
 
@@ -39,8 +36,16 @@ function favorito(id){
   }
 
 
-
  
+    function favorito(id) {
+      if (!favorites.includes(id)) {
+        favorites.push(id);
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+        console.log("Added to favorites:", id);
+      }
+   
+   
+  }
   
   function mapearDatos(data){
     let tabla = "<div class='card'>";
