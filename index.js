@@ -17,22 +17,22 @@ function getDATA (){
   let productosCardset = JSON.stringify(data)
       localStorage.setItem('productos', productosCardset)
       mapearDatos(data);
-      mapearDatos(data);
+      // mapearDatos(data);
       
       
 })
 
 }
 let listafav = []
-function favorito(id){
+// function favorito(id){
 
-  listafav.includes(2)
-  listafav.push(id)
+//   listafav.includes(2)
+//   listafav.push(id)
 
-  for (let i =0; i< listafav.length; i++){
-  console.log ("Lista fav:", listafav[i])
-  }
-console.log(listafav)  }
+//   for (let i =0; i< listafav.length; i++){
+//   console.log ("Lista fav:", listafav[i])
+//   }
+// console.log(listafav)  }
 
 
   function favorito(id) {
@@ -104,15 +104,15 @@ console.log(listafav)  }
      // Actualiza el contenido del contenedor de productos favoritos en el menú lateral
   }
 
-  let data = [
-    {"id":1,"title":"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops","price":109.95,"description":"Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday","category":"men's clothing","image":"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg","rating":{"rate":3.9,"count":120}},
+  // let data = [
+  //   {"id":1,"title":"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops","price":109.95,"description":"Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday","category":"men's clothing","image":"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg","rating":{"rate":3.9,"count":120}},
 
 
-];
+// ];
 
 
-  function otrafuncion(){
-  mapearDatos(data)
-}
+  // function otrafuncion(){
+  // mapearDatos(data)
+// }
   getDATA(); 
-  actualizarFavoritosMenu();//actualizar la dinamica de la lista
+  // actualizarFavoritosMenu();//actualizar la dinamica de la lista
