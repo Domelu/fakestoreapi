@@ -1,10 +1,6 @@
-
-
-const URL= "https://fakestoreapi.com/products";
-//let titulo = document.getElementById("titulo") 
-//let precio = document.getElementById("precio") 
+const URL= "https://fakestoreapi.com/products"; 
 let productos = document.getElementById("productos")
-// let tabla = "<div class='card'>";
+
 let favoritosMenu = document.getElementById("favoritos-menu"); // Agregar esta línea
 let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
@@ -17,41 +13,33 @@ function getDATA (){
   let productosCardset = JSON.stringify(data)
       localStorage.setItem('productos', productosCardset)
       mapearDatos(data);
-      // mapearDatos(data);
-      
-      
+   
 })
 
 }
 let listafav = []
-// function favorito(id){
-
-//   listafav.includes(2)
-//   listafav.push(id)
-
-//   for (let i =0; i< listafav.length; i++){
-//   console.log ("Lista fav:", listafav[i])
-//   }
-// console.log(listafav)  }
-
-
   function favorito(id) {
     let index = listafav.indexOf(id);
-  if (index !== -1) {
- 
-    listafav.splice(index, 1);
-    localStorage.setItem('favorites', JSON.stringify(listafav));
-    console.log("Eliminado de favoritos:", id);
-    actualizarFavoritosMenu();
-  } else {
-  
-      listafav.push(id);
-      localStorage.setItem('favorites', JSON.stringify(listafav));
-      console.log("Agregado a favoritos:", id);
-      actualizarFavoritosMenu();
-     }
+    let boton = document.querySelector(`[data-id="${id}"]`);
 
-  }
+    if (index !== -1) {
+        // Si el producto ya está en favoritos, lo eliminamos
+        listafav.splice(index, 1);
+        localStorage.setItem('favorites', JSON.stringify(listafav));
+        console.log("Eliminado de favoritos:", id);
+        actualizarFavoritosMenu();
+        // Quitamos la visibilidad del corazón
+        boton.classList.remove('difuminado');
+    } else {
+        // Si el producto no está en favoritos, lo agregamos
+        listafav.push(id);
+        localStorage.setItem('favorites', JSON.stringify(listafav));
+        console.log("Agregado a favoritos:", id);
+        actualizarFavoritosMenu();
+        // Mostramos el corazón nuevamente
+        boton.classList.add('difuminado');
+    }
+}
   
   function mapearDatos(data){
     let tabla = "<div class='card'>";
@@ -73,7 +61,7 @@ let listafav = []
     <p class='titulo'>${item.title} </p>
     <p>$${precio} <span class ='precio-sd'> $${((precio * 0.1) + precio).toFixed(2)} </span> </p>
     <label class='categoria'> ${item.category} </label>
-    <button onclick="favorito(${item.id})">❤️</button>
+    <button onclick="favorito(${item.id})" data-id="${item.id}">❤️</button>
     <button onclick='otrafuncion()'> 0 </button>
 
     </div>
