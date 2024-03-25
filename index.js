@@ -1,78 +1,66 @@
 const URL= "https://fakestoreapi.com/products"; 
-let productos = document.getElementById("productos")
+let productos = document.getElementById("productos");
+let favoritosMenu = document.getElementById("favoritos-menu"); 
+let listafav = JSON.parse(localStorage.getItem('favorites')) || [];
 
-let favoritosMenu = document.getElementById("favoritos-menu"); // Agregar esta línea
-let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-
-    
 function getDATA (){
-      fetch(URL)
-      .then( response => response.json() )
-      .then(data => {
-
-  let productosCardset = JSON.stringify(data)
-      localStorage.setItem('productos', productosCardset)
-      mapearDatos(data);
-   
-})
-
+    fetch(URL)
+    .then(response => response.json())
+    .then(data => {
+        let productosCardset = JSON.stringify(data);
+        localStorage.setItem('productos', productosCardset);
+        mapearDatos(data);
+    });
 }
-let listafav = []
-  function favorito(id) {
+
+function favorito(id) {
     let index = listafav.indexOf(id);
     let boton = document.querySelector(`[data-id="${id}"]`);
 
     if (index !== -1) {
-        // Si el producto ya está en favoritos, lo eliminamos
         listafav.splice(index, 1);
         localStorage.setItem('favorites', JSON.stringify(listafav));
         console.log("Eliminado de favoritos:", id);
         actualizarFavoritosMenu();
-        // Quitamos la visibilidad del corazón
         boton.classList.remove('difuminado');
+        mostrarMensajeEliminado(); // Llama a la función para mostrar el mensaje
     } else {
-        // Si el producto no está en favoritos, lo agregamos
         listafav.push(id);
         localStorage.setItem('favorites', JSON.stringify(listafav));
         console.log("Agregado a favoritos:", id);
         actualizarFavoritosMenu();
-        // Mostramos el corazón nuevamente
         boton.classList.add('difuminado');
     }
 }
-  
-  function mapearDatos(data){
+
+
+
+function mapearDatos(data) {
     let tabla = "<div class='card'>";
     data.forEach(item => {
-      let r = Math.floor( Math.random()*256)
-      let g = Math.floor( Math.random()*256)
-      let b = Math.floor( Math.random()*256)
-      let precio = item.price 
-   
-      let bloquehtml =
-    `
-    <div class= 'card-item'>
-    <div class='cabecera'style="background:rgb(${r} ${g} ${b});"> </div>
-    <div class= 'cont-img'>
-    <img src= "${item.image}" />
-  
-    </div>
-    
-    <p class='titulo'>${item.title} </p>
-    <p>$${precio} <span class ='precio-sd'> $${((precio * 0.1) + precio).toFixed(2)} </span> </p>
-    <label class='categoria'> ${item.category} </label>
-    <button onclick="favorito(${item.id})" data-id="${item.id}">❤️</button>
-    <button onclick='otrafuncion()'> 0 </button>
+        let r = Math.floor(Math.random() * 256);
+        let g = Math.floor(Math.random() * 256);
+        let b = Math.floor(Math.random() * 256);
+        let precio = item.price;
+        let favClass = listafav.includes(item.id) ? 'difuminado' : '';
 
-    </div>
-    
-    `;
-  tabla += bloquehtml;
-
+        let bloquehtml = `
+            <div class='card-item'>
+                <div class='cabecera' style="background:rgb(${r} ${g} ${b});"></div>
+                <div class='cont-img'>
+                    <img src="${item.image}" />
+                </div>
+                <p class='titulo'>${item.title} </p>
+                <p>$${precio} <span class='precio-sd'> $${((precio * 0.1) + precio).toFixed(2)} </span> </p>
+                <label class='categoria'> ${item.category} </label>
+                <button onclick="favorito(${item.id})" data-id="${item.id}" class="${favClass}">❤️</button> <!-- Aplica la clase de difuminado si está en favoritos -->
+            </div>
+        `;
+        tabla += bloquehtml;
     });
-    tabla +="</div>";
+    tabla += "</div>";
     productos.innerHTML = tabla;
-  }
+}
   function actualizarFavoritosMenu() {  // Actualiza el contenido del contenedor de productos favoritos en el menú lateral 
     let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
     let favoritosHTML = ''; //Inicializa una cadena vacía para almacenar los productos favoritos
@@ -89,18 +77,17 @@ let listafav = []
       }
     });
     favoritosMenu.innerHTML = favoritosHTML;
-     // Actualiza el contenido del contenedor de productos favoritos en el menú lateral
+     
   }
+  let open = document.getElementById("menu-open")
+  open.addEventListener('click',function (){
+    document.getElementById("body").classList.add("bloquear")
+  })
 
-  // let data = [
-  //   {"id":1,"title":"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops","price":109.95,"description":"Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday","category":"men's clothing","image":"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg","rating":{"rate":3.9,"count":120}},
-
-
-// ];
-
-
-  // function otrafuncion(){
-  // mapearDatos(data)
-// }
+  let close = document.getElementById("menu-close")
+  close.addEventListener('click',function (){
+    document.getElementById("body").classList.remove("bloquear")
+  })
+  
   getDATA(); 
-  // actualizarFavoritosMenu();//actualizar la dinamica de la lista
+  actualizarFavoritosMenu();

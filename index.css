@@ -6,6 +6,9 @@
     font-family: sans-serif;
 }
 
+#body.bloquear{
+  overflow-y: hidden;
+}
 .card{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -81,7 +84,6 @@ body{
   background-size: 100vw 100vh;
   background-repeat: no-repeat;
 background-attachment: fixed;
-
 }
 .capa{
   position: fixed;
@@ -97,6 +99,8 @@ background-attachment: fixed;
   height: 100px;
   position: fixed;
   top: 0;left: 0;
+ /* Alinea los elementos verticalmente en el centro */
+
 }
 .container{
   width: 80%;
@@ -111,7 +115,7 @@ background-attachment: fixed;
   display: none;
 }
 .btn-menu label {
-  font-size: 24px; /* Ajusta el tamaño de la fuente según sea necesario */
+  font-size: 25px; /* Ajusta el tamaño de la fuente según sea necesario */
   color: #ffffff; /* Cambia el color a tu preferencia */
 }
 
@@ -131,7 +135,7 @@ background-attachment: fixed;
 }
   .cont-menu {
     width: 100%;
-    max-width: 400px;
+    max-width: 330px;
     overflow-y: auto;
     background: #ffffff;
     height: 100vh;
@@ -155,4 +159,8 @@ background-attachment: fixed;
 }
 .difuminado {
   filter: opacity(20%);
+}
+.cont-menu img {
+  max-width: 80px; /* Define el ancho máximo de las imágenes del menú */
+  height: auto; /* Mantiene la proporción de aspecto de las imágenes */
 }
