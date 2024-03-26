@@ -164,3 +164,28 @@ background-attachment: fixed;
   max-width: 80px; /* Define el ancho máximo de las imágenes del menú */
   height: auto; /* Mantiene la proporción de aspecto de las imágenes */
 }
+
+.message-box {
+  position: fixed;
+  top: 0;
+  
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  display: none;
+  padding: 10px;
+  z-index: 1000;
+}
+
+
+.message-box .message {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.message-box .message-text {
+  font-size: 18px;
+  margin-right: 10px;
+}

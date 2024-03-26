@@ -13,24 +13,35 @@ function getDATA (){
     });
 }
 
-function favorito(id) {
-    let index = listafav.indexOf(id);
-    let boton = document.querySelector(`[data-id="${id}"]`);
+function mostrarMensaje(mensaje) {
+  document.querySelector('.message-text').textContent = mensaje;
+  document.querySelector('.message-box').style.display = 'block';
+  setTimeout(ocultarMensaje, 3000);
+}
 
-    if (index !== -1) {
-        listafav.splice(index, 1);
-        localStorage.setItem('favorites', JSON.stringify(listafav));
-        console.log("Eliminado de favoritos:", id);
-        actualizarFavoritosMenu();
-        boton.classList.remove('difuminado');
-        mostrarMensajeEliminado(); // Llama a la función para mostrar el mensaje
-    } else {
-        listafav.push(id);
-        localStorage.setItem('favorites', JSON.stringify(listafav));
-        console.log("Agregado a favoritos:", id);
-        actualizarFavoritosMenu();
-        boton.classList.add('difuminado');
-    }
+function ocultarMensaje() {
+  document.querySelector('.message-box').style.display = 'none';
+}
+
+function favorito(id) {
+  let index = listafav.indexOf(id);
+  let boton = document.querySelector(`[data-id="${id}"]`);
+
+  if (index !== -1) {
+    listafav.splice(index, 1);
+    localStorage.setItem('favorites', JSON.stringify(listafav));
+    console.log("Eliminado de favoritos:", id);
+    actualizarFavoritosMenu();
+    boton.classList.remove('difuminado');
+    mostrarMensaje("Producto eliminado de favoritos");
+  } else {
+    listafav.push(id);
+    localStorage.setItem('favorites', JSON.stringify(listafav));
+    console.log("Agregado a favoritos:", id);
+    actualizarFavoritosMenu();
+    boton.classList.add('difuminado');
+    mostrarMensaje("Producto agregado a favoritos");
+  }
 }
 
 
@@ -68,11 +79,11 @@ function mapearDatos(data) {
     //Busca el producto correspondiente en la lista de productos utilizando su ID
       let product = JSON.parse(localStorage.getItem('productos')).find(item => item.id === favoriteId);    // Verifica si el producto existe en la lista de productos
     if (product) {    // Si el producto existe, agrega su información al HTML de los productos favoritos
+      
         favoritosHTML += `
           <div class='favorito-item'>
             <img src='${product.image}' />
             <p>${product.title}</p>
-            
           </div>
         `;
       }
