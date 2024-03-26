@@ -72,6 +72,7 @@ function mapearDatos(data) {
           <div class='favorito-item'>
             <img src='${product.image}' />
             <p>${product.title}</p>
+            
           </div>
         `;
       }
