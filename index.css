@@ -1,5 +1,164 @@
 *{
   
+  padding: 0;
+  /* margin: 0; */
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+#body.bloquear{
+overflow-y: hidden;
+}
+.card{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+grid-gap: 20px;
+color: rgb(13, 15, 15);
+margin: 50px;
+}
+
+  
+.card-item{
+  background: linear-gradient(349deg, #d4c9c9, transparent);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+padding-bottom: 30px;
+
+}  
+
+.cabecera{
+  background: rgb(26, 29, 92);
+  height:  125px;
+  margin-bottom: 75px;
+
+}
+img{
+height: 100%;
+width: 150px; 
+object-fit: contain;
+padding: 10px;
+
+
+}
+.cont-img{
+  height: 150px;
+width: 150px; 
+border-radius: 1000px;
+/* object-fit: auto; */
+position: absolute;
+right: calc(50% - 75px);
+top: calc(50% - 125px);
+background-color: rgb(255, 255, 255);
+display: flex;
+overflow: hidden;
+
+}
+p, label{
+  padding: 3px 20px;
+  font-weight: 600;
+
+}
+.titulo{
+font-weight: 400;
+max-width: 300px;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+}
+.categoria{
+  background-color: rgba(180, 176, 176, 0.411);
+  border-radius: 20px;
+  color: rgb(70, 7, 124);
+  font-weight: 400;
+  margin-left: 15px;
+}
+.precio-sd{
+  font-size: 12px;
+  color: rgb(78, 76, 76);
+  text-decoration: line-through;
+}
+
+body{
+background: url(https://www.xtrafondos.com/wallpapers/montanas-con-nieve-en-el-bosque-3934.jpg);
+background-size: 100vw 100vh;
+background-repeat: no-repeat;
+background-attachment: fixed;
+}
+.capa{
+position: fixed;
+width: 100%;
+height: 100vh;
+background: rgba(51, 46, 46, 0.6);
+z-index: -1;
+top: 0;left: 0;
+}
+/*Estilos para el encabezado*/
+.header{
+width: 100%;
+height: 100px;
+position: fixed;
+top: 0;left: 0;
+/* Alinea los elementos verticalmente en el centro */
+
+}
+.container{
+width: 80%;
+max-width: 1200px;
+margin: auto;
+
+}
+/*Fin de Estilos para el encabezado*/
+
+/*Menù lateral*/
+#btn-menu{
+display: none;
+}
+.btn-menu label {
+font-size: 25px; /* Ajusta el tamaño de la fuente según sea necesario */
+color: #ffffff; /* Cambia el color a tu preferencia */
+}
+
+.container-menu{
+position: fixed;
+background: rgba(5, 2, 2, 0.5);
+width: 100%;
+height: 100vh;
+top: 0;left: 0;
+transition: all 500ms ease;
+opacity: 0;
+visibility: hidden;
+}
+#btn-menu:checked ~ .container-menu{
+opacity: 1;
+visibility: visible;
+}
+.cont-menu {
+  width: 100%;
+  max-width: 330px;
+  overflow-y: auto;
+  background: #ffffff;
+  height: 100vh;
+  position: fixed;
+  transition: all 500ms ease;
+  transform: translateX(-100%);
+}
+
+#btn-menu:checked ~ .container-menu .cont-menu{
+transform: translateX(0%);
+
+}
+
+.cont-menu label{
+position:absolute;
+right: 5px;
+top: 5px;
+color: #ffffff;
+cursor: pointer;
+font-size: 18px;
+}
+*{
+  
     padding: 0;
     /* margin: 0; */
     box-sizing: border-box;
@@ -157,35 +316,44 @@ background-attachment: fixed;
   cursor: pointer;
   font-size: 18px;
 }
-.difuminado {
-  filter: opacity(20%);
-}
+
 .cont-menu img {
   max-width: 80px; /* Define el ancho máximo de las imágenes del menú */
   height: auto; /* Mantiene la proporción de aspecto de las imágenes */
 }
 
 .message-box {
-  position: fixed;
-  top: 0;
-  
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  display: none;
-  padding: 10px;
-  z-index: 1000;
+position: fixed;
+top: 0; left: 50%;
+transform: translateX(-50%);
+background-color: #ffffff;
+border-radius: 5px;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+display: none;
+padding: 10px;
+z-index: 1000;
 }
 
 
 .message-box .message {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 10px;
 }
 
 .message-box .message-text {
-  font-size: 18px;
-  margin-right: 10px;
+font-size: 10px;
+margin-right: 10px;
 }
+/* Estilo para el fondo del botón */
+.button-background {
+  background-color: rgba(230, 222, 222, 0.5); /* Fondo blanco transparente */
+  border: 1px solid #c15959;
+  border-radius: 50%;
+  padding: 2px;
+  
+  
+}
+
+

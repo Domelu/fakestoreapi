@@ -32,46 +32,49 @@ function favorito(id) {
     localStorage.setItem('favorites', JSON.stringify(listafav));
     console.log("Eliminado de favoritos:", id);
     actualizarFavoritosMenu();
-    boton.classList.remove('difuminado');
+    boton.innerHTML = '❤️'; // Cambiar a corazón rojo
     mostrarMensaje("Producto eliminado de favoritos");
   } else {
     listafav.push(id);
     localStorage.setItem('favorites', JSON.stringify(listafav));
     console.log("Agregado a favoritos:", id);
     actualizarFavoritosMenu();
-    boton.classList.add('difuminado');
-    mostrarMensaje("Producto agregado a favoritos");
+    boton.innerHTML = '🤍'; // Cambiar a corazón blanco
+    mostrarMensaje("Producto agregado a favoritos");   
   }
 }
 
 
 
 function mapearDatos(data) {
-    let tabla = "<div class='card'>";
-    data.forEach(item => {
-        let r = Math.floor(Math.random() * 256);
-        let g = Math.floor(Math.random() * 256);
-        let b = Math.floor(Math.random() * 256);
-        let precio = item.price;
-        let favClass = listafav.includes(item.id) ? 'difuminado' : '';
+  let tabla = "<div class='card'>";
+  data.forEach(item => {
+      let r = Math.floor(Math.random() * 256);
+      let g = Math.floor(Math.random() * 256);
+      let b = Math.floor(Math.random() * 256);
+      let precio = item.price;
+      let favIcon = listafav.includes(item.id) ? '🤍' : '❤️'; // Corazón blanco si está en favoritos, corazón rojo si no
 
-        let bloquehtml = `
+      let bloquehtml = `
             <div class='card-item'>
-                <div class='cabecera' style="background:rgb(${r} ${g} ${b});"></div>
+                <div class='cabecera' style="background:rgb(${r}, ${g}, ${b});"></div>
                 <div class='cont-img'>
                     <img src="${item.image}" />
                 </div>
                 <p class='titulo'>${item.title} </p>
-                <p>$${precio} <span class='precio-sd'> $${((precio * 0.1) + precio).toFixed(2)} </span> </p>
+                <p>$${precio} <span class='precio-sd'>$${((precio * 0.1) + precio).toFixed(2)}</span></p>
                 <label class='categoria'> ${item.category} </label>
-                <button onclick="favorito(${item.id})" data-id="${item.id}" class="${favClass}">❤️</button> <!-- Aplica la clase de difuminado si está en favoritos -->
+                <button onclick="favorito(${item.id})" data-id="${item.id}" class="button-background">
+                  <span>${favIcon}</span>
+                </button>
             </div>
         `;
-        tabla += bloquehtml;
-    });
-    tabla += "</div>";
-    productos.innerHTML = tabla;
+      tabla += bloquehtml;
+  });
+  tabla += "</div>";
+  productos.innerHTML = tabla;
 }
+
   function actualizarFavoritosMenu() {  // Actualiza el contenido del contenedor de productos favoritos en el menú lateral 
     let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
     let favoritosHTML = ''; //Inicializa una cadena vacía para almacenar los productos favoritos
